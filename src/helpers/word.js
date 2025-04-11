@@ -18,3 +18,7 @@ export const wordsInit = [
 ];
 
 export const NUM_RANDOM = 10;
+
+export const wordsToString = (words) => {
+  return words.map(w => `${w.word}:${w.pinyin}:${w.meaning}`).join(';');
+};

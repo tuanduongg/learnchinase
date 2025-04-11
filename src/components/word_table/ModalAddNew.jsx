@@ -81,7 +81,7 @@ export default function ModalAddNew({ open, handleClose, afterSave }) {
     <div>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
-          <Typography variant="h6" marginBottom={2} component="h2">
+          <Typography variant="h6" marginBottom={2} color='black' component="h2">
             Thêm Từ Mới
           </Typography>
           <Grid container spacing={2}>
@@ -102,8 +102,8 @@ export default function ModalAddNew({ open, handleClose, afterSave }) {
           <Typography variant="h6" marginY={2} component="h2">
             Thêm Nhiều Từ Mới
           </Typography>
-          <p>Dán theo cấu trúc Từ Hán:Pinyin:NghĩaTiếngViệt;</p>
-          <p>Ví dụ:你好:nǐ hǎo:xin chào;谢谢:xièxie:cảm ơn;</p>
+          <p style={{color:'black'}}>Dán theo cấu trúc Từ Hán:Pinyin:NghĩaTiếngViệt;</p>
+          <p style={{color:'black'}}>Ví dụ:你好:nǐ hǎo:xin chào;谢谢:xièxie:cảm ơn;</p>
           <Grid container spacing={2}>
             <Grid size={9}>
               <TextField size='small' name='multiple' onChange={onChangeInput} fullWidth value={multiple} placeholder="你好:nǐ hǎo:xin chào;谢谢:xièxie:cảm ơn;" label="Dán vào đây" variant="outlined" />

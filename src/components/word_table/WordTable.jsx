@@ -6,18 +6,17 @@ import {
   CardContent,
   CardActions,
   Button,
-  TextField,
-  Grid
+  Stack
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SaveIcon from '@mui/icons-material/Save';
 import ModalAddNew from './ModalAddNew';
 import { WORDS } from '../../configs/constants';
+import ModalExportData from './ModalExportData';
 
 
-export default function WordTable({ words, getData,setWords }) {
+export default function WordTable({ words, getData, setWords }) {
   const [openModalAdd, setOpenModalAdd] = useState(false);
+  const [openModalExport, setOpenModalExport] = useState(false);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [paginatedWords, setPaginatedWords] = useState([]);
@@ -25,10 +24,10 @@ export default function WordTable({ words, getData,setWords }) {
 
 
   useEffect(() => {
-    if (words && words?.length > 0) {
-      const wordArr = words ? words?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : [];
-      setPaginatedWords(wordArr)
-    }
+    // if (words && words?.length > 0) {
+    const wordArr = words ? words?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : [];
+    setPaginatedWords(wordArr)
+    // }
   }, [words, page, rowsPerPage])
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -43,6 +42,7 @@ export default function WordTable({ words, getData,setWords }) {
     let text = 'Bạn muốn xóa từ này?';
     if (confirm(text) == true) {
       const wordsFilter = words.filter(item => item?.id !== word?.id);
+
       localStorage.setItem(WORDS, JSON.stringify(wordsFilter));
       setWords(wordsFilter)
     }
@@ -55,6 +55,10 @@ export default function WordTable({ words, getData,setWords }) {
   const onCloseModalAdd = () => {
     setOpenModalAdd(false);
   }
+  const onClickExportData = () => {
+    setOpenModalExport(true);
+
+  }
   const afterSave = () => {
     getData();
     alert('Thành công!');
@@ -66,7 +70,10 @@ export default function WordTable({ words, getData,setWords }) {
         <CardContent>
           <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'space-between' }}>
             <Typography fontWeight="bold">Tổng: {words?.length || '0'} từ</Typography>
-            <Button variant='contained' onClick={onClickAdd} size="small">Thêm mới</Button>
+            <Stack flexDirection={'row'}>
+              <Button variant='outlined' sx={{ marginRight: '5px' }} onClick={onClickExportData} size="small">Xuất dữ liệu</Button>
+              <Button variant='contained' onClick={onClickAdd} size="small">Thêm mới</Button>
+            </Stack>
           </Box>
           <Box sx={{ maxHeight: '300px', overflowY: 'auto', marginTop: '10px' }}>
             <TableContainer component={Paper}>
@@ -115,6 +122,8 @@ export default function WordTable({ words, getData,setWords }) {
         </CardActions>
       </Card>
       <ModalAddNew open={openModalAdd} handleClose={onCloseModalAdd} afterSave={afterSave} />
+      <ModalExportData open={openModalExport} words={words}  handleClose={() => { setOpenModalExport(false) }} />
+
     </>
 
   );
