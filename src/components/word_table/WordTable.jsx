@@ -62,11 +62,10 @@ export default function WordTable({ words, getData,setWords }) {
 
   return (
     <>
-      <h1>Học Tiếng Trung Cùng Tuấn Nha!</h1>
       <Card sx={{ width: '100%' }}>
         <CardContent>
           <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'space-between' }}>
-            <Typography fontWeight="bold">Danh sách từ - tổng: {words?.length || '0'} từ</Typography>
+            <Typography fontWeight="bold">Tổng: {words?.length || '0'} từ</Typography>
             <Button variant='contained' onClick={onClickAdd} size="small">Thêm mới</Button>
           </Box>
           <Box sx={{ maxHeight: '300px', overflowY: 'auto', marginTop: '10px' }}>

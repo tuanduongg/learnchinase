@@ -44,71 +44,60 @@ export default function VietNamHanyu({ words }) {
 
   return (
     <>
-      <Card sx={{ width: '100%', marginTop: 1 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'space-between' }}>
-            <Typography fontWeight="bold">Việt Nam - Nhập Hán ngữ </Typography>
-            {/* <Button variant='contained' onClick={() => { }} size="small">Làm mới</Button> */}
-          </Box>
-          <Box mx="auto" mt={2}>
-            <Stack spacing={2}>
-              {arrData?.map(word => (
-                <Paper
-                  key={word?.id}
-                  elevation={1}
-                  sx={{ display: 'flex', alignItems: 'center', padding: 1 }}
-                >
-                  <Typography sx={{ width: '50%', fontSize: 20 }}>{word?.meaning}</Typography>
-                  <TextField
-                    label="Hán ngữ"
-                    variant="standard"
-                    size="small"
-                    fullWidth
-                    value={answers[word?.id] || ''}
-                    onChange={e => handleChange(word?.id, e.target.value)}
-                    sx={{ mx: 1 }}
-                  />
-                  {result[word?.id] !== undefined && (
-                    <Typography color={result[word.id] ? 'success.main' : 'error.main'}>
-                      {result[word.id] ? '✅' : '❌'}
-                    </Typography>
-                  )}
-                </Paper>
-              ))}
-            </Stack>
+      <Box mx="auto">
+        <Stack spacing={2}>
+          {arrData?.map(word => (
+            <Paper
+              key={word?.id}
+              elevation={1}
+              sx={{ display: 'flex', alignItems: 'center', padding: 1 }}
+            >
+              <Typography sx={{ width: '50%', fontSize: 20 }}>{word?.meaning}</Typography>
+              <TextField
+                label="Hán ngữ"
+                variant="standard"
+                size="small"
+                fullWidth
+                value={answers[word?.id] || ''}
+                onChange={e => handleChange(word?.id, e.target.value)}
+                sx={{ mx: 1 }}
+              />
+              {result[word?.id] !== undefined && (
+                <Typography color={result[word.id] ? 'success.main' : 'error.main'}>
+                  {result[word.id] ? '✅' : '❌'}
+                </Typography>
+              )}
+            </Paper>
+          ))}
+        </Stack>
 
-            <Grid container spacing={2}>
-              <Grid size={6} >
-                <Button
-                  fullWidth
-                  variant="outlined"
-                  color="primary"
-                  onClick={resetAnswers}
-                  sx={{ mt: 3 }}
-                >
-                  Làm mới
-                </Button>
+        <Grid container spacing={2}>
+          <Grid size={6} >
+            <Button
+              fullWidth
+              variant="outlined"
+              color="primary"
+              onClick={resetAnswers}
+              sx={{ mt: 3 }}
+            >
+              Làm mới
+            </Button>
 
-              </Grid>
-              <Grid size={6} >
+          </Grid>
+          <Grid size={6} >
 
-                <Button
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  onClick={checkAnswers}
-                  sx={{ mt: 3 }}
-                >
-                  Kiểm tra
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-        </CardContent>
-        <CardActions>
-
-        </CardActions>
-      </Card>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={checkAnswers}
+              sx={{ mt: 3 }}
+            >
+              Kiểm tra
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
     </>
 
   );

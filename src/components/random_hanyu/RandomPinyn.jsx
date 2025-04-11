@@ -44,13 +44,7 @@ export default function RandomPinyn({ words }) {
 
   return (
     <>
-      <Card sx={{ width: '100%', marginTop: 1 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'space-between' }}>
-            <Typography fontWeight="bold">Hán ngữ - Nhập Pinyin</Typography>
-            {/* <Button variant='contained' onClick={() => { }} size="small">Làm mới</Button> */}
-          </Box>
-          <Box mx="auto" mt={2}>
+          <Box mx="auto" >
             <Stack spacing={2}>
               {arrData?.map(word => (
                 <Paper
@@ -104,11 +98,6 @@ export default function RandomPinyn({ words }) {
               </Grid>
             </Grid>
           </Box>
-        </CardContent>
-        <CardActions>
-
-        </CardActions>
-      </Card>
     </>
 
   );

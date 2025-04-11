@@ -44,13 +44,7 @@ export default function HanyuVietNam({ words }) {
 
   return (
     <>
-      <Card sx={{ width: '100%', marginTop: 1 }}>
-        <CardContent>
-          <Box sx={{ display: 'flex', justifyItems: 'center', justifyContent: 'space-between' }}>
-            <Typography fontWeight="bold">Hán ngữ - Nhập Việt Nam</Typography>
-            {/* <Button variant='contained' onClick={() => { }} size="small">Làm mới</Button> */}
-          </Box>
-          <Box mx="auto" mt={2}>
+          <Box mx="auto" mt={0}>
             <Stack spacing={2}>
               {arrData?.map(word => (
                 <Paper
@@ -104,11 +98,13 @@ export default function HanyuVietNam({ words }) {
               </Grid>
             </Grid>
           </Box>
+      {/* <Card sx={{ width: '100%', marginTop: 1 }}>
+        <CardContent>
         </CardContent>
         <CardActions>
 
         </CardActions>
-      </Card>
+      </Card> */}
     </>
 
   );
