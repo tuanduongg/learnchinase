@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Box sx={{ width: { xs: '100%', md: '50%' }, marginX: 'auto' }}>
-        <h1 >Học Tiếng Trung Cùng Tuấn Nha!</h1>
+        <h1 style={{color:'#3f50b5'}}>Học Tiếng Trung Cùng Tuấn Nha!</h1>
 
         <Accordion defaultExpanded>
           <AccordionSummary
